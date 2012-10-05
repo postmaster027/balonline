@@ -1,0 +1,67 @@
+{% include 'header.html' %}
+<div class="container">
+<div id="head-wrapper">
+    <div id="head-center"  class="head"></div>
+    
+    <div id="head-left" class="head">
+        <div id="today" class="head-widget">
+        {{ datetime }}
+<!--                {% include 'currency.html' %}-->
+        </div>
+        <div id="weather" class="head-widget">
+<!--        {% include 'weather.html' %}-->
+
+        </div>
+    </div>
+    
+    
+<!--    <div id="head-right" class="head">сколько человек, ролей, вход</div>-->
+</div>
+<div id="menu">
+<ul>
+<!--    <li><a href="/">Главная</a></li>-->
+<!--        <li><a href="/events/">События</a></li>-->
+<!--            <li><a href="/catalog/">Справочник</a></li>-->
+<!--    <li><a href="/forum/">Форум</a></li>-->
+</ul>
+</div>
+
+<div id="body-wrapper">
+    <div id="body-center"  class="body">
+<!--        <div id="announcement" class="body_widget">анонс событий</div>-->
+        {% block content %}
+        {% endblock %}
+
+    </div>
+    
+<!--    <div id="body-left" class="body">-->
+<!--        <div id="hotnumbers" class="body-widget">Полезные телефоны</div>-->
+<!--        <div id="qsearch" class="body-widget">быстрый поиск в справочнике</div>-->
+<!--        <div id="advert" class="body-widget">реклама</div>-->
+<!--    </div>-->
+<!--    -->
+<!--    -->
+<!--    <div id="body-right" class="body">-->
+<!--        <div id="movie" class="body-widget">расписание кинотеатров</div>-->
+<!--        <div id="people" class="body-widget">полезные люди</div>-->
+<!--        <div id="vkfb" class="body-widget">привязка соц сетей </div>-->
+<!--    </div>-->
+    
+</div>
+<!--<div id="menu"></div>-->
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% include 'footer.html' %}

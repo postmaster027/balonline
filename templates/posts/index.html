@@ -1,0 +1,44 @@
+{% extends 'posts/base.html' %}
+
+{% block content %}
+    
+{% if main_post %}
+<div class="post">
+
+<h2>{{main_post.title}}</h2>
+    
+<div class="post_meta">
+От {{main_post.pub_date}}
+</div>
+
+<!--<div class="post_image">-->
+<!--<img src="{{post.image.url}}" alt="альтернативный текст">-->
+<!--</div>-->
+
+<div class="post_body">
+{{ main_post.annotation|safe|linebreaks }}
+</div>
+
+<div class="post_foot">
+<a href="/posts/{{ main_post.id }}">Подробнее</a>
+</div>
+
+</div>
+{% endif %}
+
+<div id="news" class="body_widget">
+
+{% for post in latest_posts %}
+
+<p>{{ post.pub_date|date:"Y-m-d" }}: <a href="/posts/{{ post.id }}">{{post.title}}</a></p>
+
+{% endfor %}
+
+<div class="post_foot">
+<a href="/posts/archive">Архив</a>
+</div>
+
+</div>
+
+{% endblock %}
+
