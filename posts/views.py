@@ -23,12 +23,12 @@ def index(request):
 def detail(request, post_id):
     locale.setlocale(locale.LC_ALL, 'ru_RU.UTF-8')
 
-    post = get_object_or_404(Post, pk=post_id)
+    main_post = get_object_or_404(Post, pk=post_id)
    
     return render_to_response('posts/detail.html', 
     {
     'datetime': datetime.datetime.now().strftime('%H:%M, %A, %b %Y'),
-    'post': post
+    'main_post': main_post
     }, 
     context_instance=RequestContext(request))
     
@@ -37,7 +37,7 @@ def archive(request):
 
     latest_posts = Post.objects.all().order_by('-pub_date')
    
-    return render_to_response('posts/index.html', 
+    return render_to_response('posts/archive.html', 
     {
     'datetime': datetime.datetime.now().strftime('%H:%M, %A, %b %Y'),
     'latest_posts': latest_posts

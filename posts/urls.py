@@ -7,3 +7,5 @@ urlpatterns = patterns('posts.views',
     url(r'(?P<post_id>\d+)/$', 'detail'),
     url(r'archive$', 'archive'),
 )
+
+

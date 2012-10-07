@@ -2,7 +2,7 @@
 
 {% block content %}
 
-<div id="news" class="body_widget">
+<div class="post_list">
 
 {% for post in latest_posts %}
 
@@ -10,7 +10,9 @@
 
 {% endfor %}
 
+    <div class="post_foot">
+    <a href="/posts">На главную</a>
+    </div>
 </div>
-
 {% endblock %}
 

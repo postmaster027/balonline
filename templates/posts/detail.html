@@ -3,14 +3,18 @@
 {% block content %}
 
 <div class="post">
-    <h2>{{ post.title }}</h2>
+    <h2>{{ main_post.title }}</h2>
     
     <div class="post_meta">
-    От {{ post.pub_date }}
+    От {{ main_post.pub_date }}
+    </div>
+
+    <div class="post_image">
+    <img src="/{{main_post.image.url}}" alt="альтернативный текст"> 
     </div>
 
     <div class="post_body">
-    {{ post.content|safe|linebreaks }}
+    {{ main_post.content|safe|linebreaks }}
     </div>
     
     <div class="post_foot">

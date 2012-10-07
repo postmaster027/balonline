@@ -11,11 +11,11 @@
 От {{main_post.pub_date}}
 </div>
 
-<!--<div class="post_image">-->
-<!--<img src="{{post.image.url}}" alt="альтернативный текст">-->
-<!--</div>-->
+<div class="post_image">
+<img src="/{{main_post.image.url}}" alt="альтернативный текст"> 
+</div>
 
-<div class="post_body">
+<div class="post_annotation">
 {{ main_post.annotation|safe|linebreaks }}
 </div>
 
@@ -26,7 +26,7 @@
 </div>
 {% endif %}
 
-<div id="news" class="body_widget">
+<div class="post_list">
 
 {% for post in latest_posts %}
 
@@ -34,7 +34,7 @@
 
 {% endfor %}
 
-<div class="post_foot">
+<div class="post_archive">
 <a href="/posts/archive">Архив</a>
 </div>
 

@@ -61,6 +61,7 @@ body {
 
 #today {
     width: 50%;
+    font-size: 12px;
 }
 
 #weather {
@@ -69,10 +70,11 @@ body {
 
 #menu {
     clear: both;    
-    background: -moz-linear-gradient(top, #e2e2e2 0%, #dbdbdb 50%, #d1d1d1 51%, #fefefe 100%);
-    background: -webkit-linear-gradient(top, #e2e2e2 0%,#dbdbdb 50%,#d1d1d1 71%,#fefefe 100%);
-    background: -o-linear-gradient(top, #e2e2e2 0%,#dbdbdb 50%,#d1d1d1 51%,#fefefe 100%);
-    background: linear-gradient(top, #e2e2e2 0%,#dbdbdb 50%,#d1d1d1 51%,#fefefe 100%);
+    background: orange;
+/*    background: -moz-linear-gradient(top, #e2e2e2 0%, #dbdbdb 50%, #d1d1d1 51%, #fefefe 100%);*/
+/*    background: -webkit-linear-gradient(top, #e2e2e2 0%,#dbdbdb 50%,#d1d1d1 71%,#fefefe 100%);*/
+/*    background: -o-linear-gradient(top, #e2e2e2 0%,#dbdbdb 50%,#d1d1d1 51%,#fefefe 100%);*/
+/*    background: linear-gradient(top, #e2e2e2 0%,#dbdbdb 50%,#d1d1d1 51%,#fefefe 100%);*/
     width: 100%;
     height: 40px;
 }
@@ -124,6 +126,32 @@ a:hover{
     background-color: white;
     width: 100%;
     height: 500px;
+}
+
+.post{
+    width: 100%;
+/*    border: 2px solid orange; /* Параметры линии внизу */*/
+}
+
+.post_image {
+    width: 200px;
+    float: left;
+}
+
+.post_image img{
+    width: 200px;
+}
+
+.post_annotation {
+    padding-left: 220px;
+}
+
+.post_foot{
+    padding-left: 220px;
+}
+
+.post_list{
+    clear: both;
 }
 
 #body-left {
