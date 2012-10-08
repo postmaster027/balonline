@@ -5,16 +5,35 @@ import datetime
 import urllib
 import xml.dom.minidom
 
-class Quote(models.Model):
-    date = models.DateField(unique=True)
-    usd = models.FloatField(default=0.0)
-    eur = models.FloatField(default=0.0)
+class CBRExchange():
 
-    def __unicode__(self):
-        return strftime("%d-%m-%Y", localtime())
+    def refresh(self):
+        quote = False
+        try:
+            quote = Quote.objects.get(tstamp=datetime.date.today())
+        except:
+            quote = self.get_quotes()
+            quote.save()
+        return quote
+        
+    def get_quotes(self):
+#        print "GET_QUOTES!!!"
+        quote = Quote()
+        quote.tstamp = datetime.date.today()
 
-    def ekGetInput(self, sDate):
-        sURL="http://www.cbr.ru/scripts/XML_daily.asp?date_req=%s" % (sDate)
+        lstDicXMLNodes=self.ekParseXMLDoc(self.ekGetInput())
+
+        for dicXMLNode in lstDicXMLNodes:
+            nodeNumCode = int(dicXMLNode['NumCode'])
+            nodeValue = float(dicXMLNode['Value'].replace(",","."))
+            if nodeNumCode == 840:
+                quote.usd = nodeValue
+            elif nodeNumCode == 978:
+                quote.eur = nodeValue
+        return quote
+
+    def ekGetInput(self):
+        sURL="http://www.cbr.ru/scripts/XML_daily.asp?date_req=%s" % (strftime("%d.%m.%Y", localtime()))
         u=urllib.urlopen(sURL)
         return u.read()
 
@@ -36,25 +55,11 @@ class Quote(models.Model):
             dicXMLNodes={}
         return lstDicXMLNodes
 
+class Quote(models.Model):
+    tstamp = models.DateField(unique=True)
+    usd = models.FloatField(default=0.0)
+    eur = models.FloatField(default=0.0)
 
-    def save(self):
-        self.date = datetime.date.today()
-        print self.date
-        
-        sDate = strftime("%d.%m.%Y", localtime())
+    def __unicode__(self):
+        return self.tstamp.strftime("%d-%m-%Y")
 
-        lstDicXMLNodes = ()
-        lstDicXMLNodes=self.ekParseXMLDoc(self.ekGetInput(sDate))
-
-        for dicXMLNode in lstDicXMLNodes:
-            nodeNumCode = int(dicXMLNode['NumCode'])
-            nodeValue = float(dicXMLNode['Value'].replace(",","."))
-#            print nodeNumCode, nodeValue
-            if nodeNumCode == 840:
-                self.usd = nodeValue
-            elif nodeNumCode == 978:
-                self.eur = nodeValue
-        try:
-            super(Quote, self).save()
-        except:
-            pass

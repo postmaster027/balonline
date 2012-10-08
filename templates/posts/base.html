@@ -12,7 +12,12 @@
         (eur) {{ quote.eur }}
         </div>
         <div id="weather" class="head-widget">
-<!--        {% include 'weather.html' %}-->
+
+        {% for fc in forecasts %}
+
+        {{ fc.daytime }}: {{ fc.temperature }}, {{ fc.phenomena }} <br>
+
+        {% endfor %}
 
         </div>
     </div>
