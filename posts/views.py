@@ -5,9 +5,14 @@ import datetime
 import locale
 
 from posts.models import Post
+from cbrexchange.models import Quote
 
 def index(request):
     locale.setlocale(locale.LC_ALL, 'ru_RU.UTF-8')
+    
+    today_quote = Quote()
+    today_quote.save()
+    quote = Quote.objects.latest('date')
 
     main_post = Post.objects.latest('pub_date')
     latest_posts = Post.objects.all().order_by('-pub_date')[1:6]
@@ -16,7 +21,8 @@ def index(request):
     {
     'datetime': datetime.datetime.now().strftime('%H:%M, %A, %b %Y'),
     'latest_posts': latest_posts,
-    'main_post': main_post
+    'main_post': main_post,
+    'quote': quote
     }, 
     context_instance=RequestContext(request))
 

@@ -6,7 +6,10 @@
     <div id="head-left" class="head">
         <div id="today" class="head-widget">
         {{ datetime }}
-<!--                {% include 'currency.html' %}-->
+        <br>
+        (usd) {{ quote.usd }}
+        <br>
+        (eur) {{ quote.eur }}
         </div>
         <div id="weather" class="head-widget">
 <!--        {% include 'weather.html' %}-->
