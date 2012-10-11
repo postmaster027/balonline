@@ -44,6 +44,7 @@ body {
     width: 400px; /* LC width */
     right: 400px; /* LC width */
     margin-left: -100%;
+    text-align: center;
 }
 
 #head-right {

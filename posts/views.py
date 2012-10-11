@@ -7,11 +7,13 @@ import locale
 from posts.models import Post
 from cbrexchange.models import CBRExchange, Quote
 from weather.models import GismeteoWeather, Forecast
+from traffic.models import YandexTraffic, Traffic
 
 def index(request):
     locale.setlocale(locale.LC_ALL, 'ru_RU.UTF-8')
     
     GismeteoWeather().refresh()
+    YandexTraffic().refresh()
 
     main_post = False
     try:
@@ -25,7 +27,8 @@ def index(request):
     'latest_posts': Post.objects.all().order_by('-pub_date')[1:6],
     'main_post': main_post,
     'quote': CBRExchange().refresh(),
-    'forecasts': Forecast.objects.all().order_by('tstamp')
+    'forecasts': Forecast.objects.all().order_by('tstamp'),
+    'traffic': Traffic.objects.latest('tstamp')
     }, 
     context_instance=RequestContext(request))
 

@@ -7,12 +7,17 @@
         <div id="today" class="head-widget">
         {{ datetime }}
         <br>
+        Курсы валют:
+        <br>
         (usd) {{ quote.usd }}
         <br>
         (eur) {{ quote.eur }}
+        <br>
+        <a href="/traffic">{{ traffic.level }} {{ traffic.color }}</a>
         </div>
         <div id="weather" class="head-widget">
-
+        Погода в Балашихе:
+        <br>
         {% for fc in forecasts %}
 
         {{ fc.daytime }}: {{ fc.temperature }}, {{ fc.phenomena }} <br>
@@ -23,7 +28,12 @@
     </div>
     
     
-<!--    <div id="head-right" class="head">сколько человек, ролей, вход</div>-->
+    <div id="head-right" class="head">
+    
+
+<!--    сколько человек, ролей, вход-->
+    
+    </div>
 </div>
 <div id="menu">
 <ul>

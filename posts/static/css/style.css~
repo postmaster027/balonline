@@ -131,7 +131,7 @@ a:hover{
 
 .post{
     width: 100%;
-/*    border: 2px solid orange; /* Параметры линии внизу */*/
+/*    border: 2px solid orange; */
 }
 
 .post_image {

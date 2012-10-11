@@ -122,7 +122,8 @@ INSTALLED_APPS = (
     # 'django.contrib.admindocs',
     'posts',
     'cbrexchange',
-    'weather'
+    'weather',
+    'traffic'
 )
 
 # A sample logging configuration. The only tangible logging
