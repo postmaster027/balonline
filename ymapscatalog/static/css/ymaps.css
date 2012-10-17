@@ -1,0 +1,16 @@
+.ymaps_wrapper {
+    margin: 5px;
+    padding: 0;
+    width: 100%;
+
+}
+.ymaps_center {
+    float: left;
+    width: 60%;
+    height: 500px;
+}
+
+.ymaps_right {
+    padding-left: 61%;
+    width: 40%;
+}

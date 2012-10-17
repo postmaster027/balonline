@@ -1,4 +1,4 @@
-# Django settings for balonline2 project.
+# Django settings for balonline project.
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
@@ -123,7 +123,8 @@ INSTALLED_APPS = (
     'posts',
     'cbrexchange',
     'weather',
-    'traffic'
+    'ymapscatalog',
+    'taggit'
 )
 
 # A sample logging configuration. The only tangible logging

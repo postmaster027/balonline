@@ -1,0 +1,53 @@
+{% extends 'basetemplate.html' %}
+
+{% block header_include %}
+    {% include 'posts/posts_header.html' %}
+{% endblock %}
+
+{% block content %}
+
+<div id="body-wrapper">
+
+    <div id="body-center"  class="body">
+        <!--        <div id="announcement" class="body_widget">анонс событий</div>-->
+        {% block post_content %}
+        {% endblock %}
+
+    </div>
+
+    <!--    <div id="body-left" class="body">-->
+    <!--        <div id="hotnumbers" class="body-widget">Полезные телефоны</div>-->
+    <!--        <div id="qsearch" class="body-widget">быстрый поиск в справочнике</div>-->
+    <!--        <div id="advert" class="body-widget">реклама</div>-->
+    <!--    </div>-->
+    <!--    -->
+    <!--    -->
+    <div id="body-right" class="body">
+
+        <!--        <div id="people" class="body-widget">полезные люди</div>-->
+        <!--        <div id="vkfb" class="body-widget">-->
+        <div id="vk_groups" class="body-widget"></div>
+        <script type="text/javascript">
+            VK.Widgets.Group("vk_groups", {mode: 0, width: "300", height: "100"}, 44063586);
+        </script>
+        <div id="movie" class="body-widget">расписание кинотеатров</div>
+    </div>
+</div>
+
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -8,7 +8,7 @@ admin.autodiscover()
 urlpatterns = patterns('',
     # Examples:
     url(r'^$', 'posts.views.index'),
-    url(r'^traffic/$', 'traffic.views.index'),
+    url(r'^catalog/', include('ymapscatalog.urls')),
     # url(r'^balonline/', include('balonline.foo.urls')),
     url(r'^posts/', include('posts.urls')),
     # Uncomment the admin/doc line below to enable admin documentation:

@@ -1,0 +1,26 @@
+{% extends 'basetemplate.html' %}
+
+{% block header_include %}
+    {% include 'ymapscatalog/ymaps_header.html' %}
+{% endblock %}
+
+
+{% block content %}
+<div class="ymaps_wrapper">
+
+    <div class="ymaps_center">
+
+        {% block ymaps_center %}
+        {% endblock %}
+
+    </div>
+
+
+    <div class="ymaps_right">
+
+        {% block ymaps_right %}
+        {% endblock %}
+
+    </div>
+</div>
+{% endblock %}

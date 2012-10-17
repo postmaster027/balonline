@@ -1,0 +1,92 @@
+
+{% extends 'ymapscatalog/ymaps_base.html' %}
+
+{% block ymaps_center %}
+
+    <script type="text/javascript">
+        ymaps.ready(init);
+
+        function init () {
+            var myMap = new ymaps.Map("map", {
+                        center: [55.81, 37.953], // Балашиха
+                        zoom: 13,
+                        behaviors: ['default', 'scrollZoom']
+
+                    }),
+                    myCollection = new ymaps.GeoObjectCollection();
+
+            myMap.controls
+                // Кнопка изменения масштаба
+                    .add('zoomControl')
+                // Список типов карты
+                    .add('typeSelector')
+                // Кнопка изменения масштаба - компактный вариант
+                // Расположим её справа
+                // Стандартный набор кнопок
+                    .add('mapTools')
+                    .add('scaleLine')
+                    .add('routeEditor')
+
+            for (var i = 0; i < 10; i++) {
+                // Создаем метку и задаем изображение для ее иконки
+                myPlacemark = new ymaps.Placemark([55.76, 37.64],
+                    {
+                    balloonContent: 'Bingo!'
+                    },
+                    {
+                    iconImageHref: '/maps/doc/jsapi/2.x/examples/images/myIcon.gif', // картинка иконки
+                    iconImageSize: [30, 42], // размеры картинки
+                    iconImageOffset: [-3, -42] // смещение картинки
+                    }
+                );
+                myMap.geoObjects.add(myPlacemark);
+            }
+
+
+            $('#search_form').submit(function () {
+                var search_query = $('input:first').val();
+
+                ymaps.geocode(search_query, {results: 100}).then(function (res)
+                {
+                    myCollection.removeAll();
+                    myCollection = res.geoObjects;
+                    myMap.geoObjects.add(myCollection);
+                });
+                return false;
+            });
+        }
+    </script>
+
+
+    <div id="map" style="width: 100%; height: 100%"></div>
+{% endblock %}
+
+{% block ymaps_right %}
+
+    <form id="search_form">
+        <input type="text" value="Балашиха, МФЦ""/>
+        <input type="submit" value="Найти"/>
+    </form>
+
+    <div class="catalog_items">
+
+    {% for firm in firms %}
+        <div class="firm_preview">
+            <div class="firm_name">{{ firm.name }}</div>
+            <div class="firm_rating">{{ firm.rating }}</div>
+            <div class="firm_logo"></div>
+            <div class="firm_about">{{ firm.about }}</div>
+            <div class="firm_contacts">{{ firm.contacts }}</div>
+            <div class="firm_tags">
+                {% for tag in firm.tags.all %}
+                    <a href="/catalog/tag/{{ tag }}">{{  tag  }}</a>
+                    {% if not forloop.last %}, {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+    {% endfor %}
+
+    </div>
+
+{% endblock %}
+

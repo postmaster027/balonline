@@ -7,7 +7,7 @@ import locale
 from posts.models import Post
 from cbrexchange.models import CBRExchange, Quote
 from weather.models import GismeteoWeather, Forecast
-from traffic.models import YandexTraffic, Traffic
+from ymapscatalog.models import YandexTraffic, Traffic
 
 def index(request):
     locale.setlocale(locale.LC_ALL, 'ru_RU.UTF-8')
