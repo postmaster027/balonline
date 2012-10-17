@@ -21,7 +21,7 @@ def index(request):
     except:
         pass
 
-    return render_to_response('posts/index.html', 
+    return render_to_response('posts/index.html',
     {
     'datetime': datetime.datetime.now().strftime('%H:%M, %A, %b %Y'),
     'latest_posts': Post.objects.all().order_by('-pub_date')[1:6],

@@ -1,4 +1,4 @@
-{% extends 'basetemplate.html' %}
+{% extends 'avos_template.html' %}
 
 {% block header_include %}
     {% include 'posts/posts_header.html' %}
@@ -6,33 +6,103 @@
 
 {% block content %}
 
-<div id="body-wrapper">
+    <div id="container">
+        <div id="content">
+            {% block post_content %}
+            {% endblock %}
+        </div><!-- #content-->
+    </div><!-- #container-->
 
-    <div id="body-center"  class="body">
-        <!--        <div id="announcement" class="body_widget">анонс событий</div>-->
-        {% block post_content %}
-        {% endblock %}
+    <div class="sidebar" id="sideLeft">
+        <div id="weather">
+            <strong class="first">Погода</strong>
 
-    </div>
+            <!-- Gismeteo informer START -->
+            <link rel="stylesheet" type="text/css" href="http://www.gismeteo.ru/static/css/informer2/gs_informerClient.min.css">
+            <div id="gsInformerID-5BrJS3mW" class="gsInformer" style="width:225px;height:185px">
+                <div class="gsIContent">
+                    <div id="cityLink">
+                        <a href="http://www.gismeteo.ru/city/daily/11447/" target="_blank">Погода в Балашихе</a>
+                    </div>
+                    <div class="gsLinks">
+                        <table>
+                            <tr>
+                                <td>
+                                    <div class="leftCol">
+                                        <a href="http://www.gismeteo.ru" target="_blank">
+                                            <img alt="Gismeteo" title="Gismeteo" src="http://www.gismeteo.ru/static/images/informer2/logo-mini2.png" align="absmiddle" border="0" />
+                                            <span>Gismeteo</span>
+                                        </a>
+                                    </div>
+                                    <div class="rightCol">
+                                        <a href="http://www.gismeteo.ru/city/weekly/11447/" target="_blank">Прогноз на 2 недели</a>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <script src="http://www.gismeteo.ru/ajax/getInformer/?hash=5BrJS3mW" type="text/javascript"></script>
+            <!-- Gismeteo informer END -->
 
-    <!--    <div id="body-left" class="body">-->
-    <!--        <div id="hotnumbers" class="body-widget">Полезные телефоны</div>-->
-    <!--        <div id="qsearch" class="body-widget">быстрый поиск в справочнике</div>-->
-    <!--        <div id="advert" class="body-widget">реклама</div>-->
-    <!--    </div>-->
-    <!--    -->
-    <!--    -->
-    <div id="body-right" class="body">
+            {% comment %}{% for fc in forecasts %}
 
-        <!--        <div id="people" class="body-widget">полезные люди</div>-->
-        <!--        <div id="vkfb" class="body-widget">-->
-        <div id="vk_groups" class="body-widget"></div>
-        <script type="text/javascript">
-            VK.Widgets.Group("vk_groups", {mode: 0, width: "300", height: "100"}, 44063586);
-        </script>
-        <div id="movie" class="body-widget">расписание кинотеатров</div>
-    </div>
-</div>
+                {{ fc.daytime }}: {{ fc.temperature }}, {{ fc.phenomena }} <br>
+
+            {% endfor %}{% endcomment %}
+        </div>
+        <div id="phonebook">
+            <strong class="first">Экстренные телефоны</strong>
+             <b>Пожарная служба</b> 01 и (495)521-91-90 <br>
+            <b>Полиция</b> 02 и (495)524-35-17 <br>
+            <b>Скорая помощь</b> 03 и (495)524-11-18 <br>
+            <b>Газовая служба</b> 04 и (495)524-11-45 <br>
+            <b>Центр по ГО и ЧС</b> (495)529-21-54 <br>
+            <b>Служба спасения</b> (495)521-10-56 <br>
+        </div>
+        <div id="places">
+            <strong class="first">Места</strong>
+            <ul id="placeicons">
+                <li><a href="#">
+                    <img src="/static/img/eat.png" alt="lorem" />
+                </a></li>
+                <li><a href="#">
+                    <img src="/static/img/enjoy.png" alt="lorem" />
+                </a></li>
+                <li><a href="#">
+                    <img src="/static/img/medic.png" alt="lorem" />
+                </a></li>
+                <li><a href="#">
+                    <img src="/static/img/sport.png" alt="lorem" />
+                </a></li>
+                <li><a href="#">
+                    <img src="/static/img/car.png" alt="lorem" />
+                </a></li>
+                <li><a href="#">
+                    <img src="/static/img/organ.png" alt="lorem" />
+                </a></li>
+            </ul>
+        </div>
+    </div><!-- .sidebar#sideLeft -->
+
+    <div class="sidebar" id="sideRight">
+        <div id="tournament">
+            <strong class="first">Популярное</strong>
+            <a href="#"><img src="/static/img/itcource.jpg" width="228" height="225" alt="Компьютерные курсы" /></a>
+        </div>
+        <div id="contact">
+            <div id="vk_groups"></div>
+            <script type="text/javascript">
+                VK.Widgets.Group("vk_groups", {mode: 0, width: "228", height: "240"}, 44063586);
+            </script>
+        </div>
+        <div id="banner">
+            <a href="http://www.pchelincev.com">
+                <img src="/static/img/banner.png" width="225" height="225" alt="Баннер мед" />
+            </a>
+        </div>
+    </div><!-- .sidebar#sideRight -->
 
 {% endblock %}
 

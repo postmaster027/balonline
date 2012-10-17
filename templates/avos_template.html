@@ -1,0 +1,89 @@
+{% block header_include %}
+{% endblock %}
+
+<div id="wrapper">
+
+    <div id="header">
+        <div id="topline">
+            <strong>Регистрация на сайте откроется в ближайшее время!</strong>
+        </div>
+        <h1>Балашиха Online</h1>
+    </div><!-- #header-->
+
+    <div id="menu">
+        <ul id="main-navigation">
+            <li><a href="#">Главная</a></li>
+            <li><a href="#">Новости</a></li>
+            <li><a href="#">Погода</a></li>
+            <li><a href="#">Афиша</a></li>
+            <li><a href="#">Транспорт</a></li>
+            <li><a href="#">Объявления</a></li>
+            <li><a href="#">Редакция</a></li>
+        </ul>
+    </div>
+
+    <div id="middle">
+        {% block content %}
+        {% endblock %}
+    </div><!-- #middle-->
+
+    <div id="footer">
+        <strong></strong>
+    </div><!-- #footer -->
+
+</div><!-- #wrapper -->
+
+
+{% comment %}<div class="container">
+    <div id="head-wrapper">
+        <div id="head-center"  class="head"></div>
+
+        <div id="head-left" class="head">
+            <div id="today" class="head-widget">
+                {{ datetime }}
+                <br>
+                Курсы валют:
+                <br>
+                (usd) {{ quote.usd }}
+                <br>
+                (eur) {{ quote.eur }}
+                <br>
+                <a href="/traffic">{{ traffic.level }} {{ traffic.color }}</a>
+            </div>
+            <div id="weather" class="head-widget">
+                Погода в Балашихе:
+                <br>
+                {% for fc in forecasts %}
+
+                    {{ fc.daytime }}: {{ fc.temperature }}, {{ fc.phenomena }} <br>
+
+                {% endfor %}
+
+            </div>
+        </div>
+
+
+        <div id="head-right" class="head">
+
+
+            <!--    сколько человек, ролей, вход-->
+
+        </div>
+
+    </div>
+    <div id="menu">
+        <ul>
+            <!--    <li><a href="/">Главная</a></li>-->
+            <!--        <li><a href="/events/">События</a></li>-->
+            <!--            <li><a href="/catalog/">Справочник</a></li>-->
+            <!--    <li><a href="/forum/">Форум</a></li>-->
+        </ul>
+    </div>
+
+
+    {% block content %}
+    {% endblock %}
+
+</div>{% endcomment %}
+
+{% include 'footer.html' %}
